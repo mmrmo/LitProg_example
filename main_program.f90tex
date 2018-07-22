@@ -1,0 +1,45 @@
+%start_latex
+\section{Test included file}
+
+Attempt at \index{analytical index entry}analytical index entry.
+%stop_latex
+
+%start_f90
+program test
+  implicit none
+! Source before the included snippet
+
+!start_source_snippet
+! This source portion will be included as first snippet:
+  print *,'test'
+!stop_source_snippet
+
+!start_source_snippet
+! This source portion will be included as second snippet:
+  print *,'Second test: snippet 2'
+!stop_source_snippet
+
+end program test
+%stop_f90
+
+%start_latex
+   \begin{small}
+   \begin{longtable}{|l|l|}
+   \hline
+   \begin{minipage}{.68\linewidth}\lstinputlisting[breaklines=true,language=Fortran]{main_program.f90tex_snippet_1.snippet}\end{minipage}
+   &
+   \begin{minipage}{.32\linewidth}
+   Comment snippet 1
+   \end{minipage}
+   \\
+   \hline
+   \begin{minipage}{.68\linewidth}\lstinputlisting[breaklines=true,language=Fortran]{main_program.f90tex_snippet_2.snippet}\end{minipage}
+   &
+   \begin{minipage}{.32\linewidth}
+   Comment snippet 2
+   \end{minipage}
+   \\
+   \end{longtable}
+   \end{small}
+
+%stop_latex

@@ -1,0 +1,103 @@
+%start_latex
+\documentclass[a4paper,10pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{listings} % For source code inclusion from file and prettyprinting.
+\lstset{
+frame=single,
+backgroundcolor=\color{mylightgray},
+language=Fortran,
+breaklines=true,
+morekeywords={ifdef}, % Manual inclusion of keyword from preprocessor.
+basicstyle=\footnotesize,
+title=From: \fbox{\lstname}}
+\usepackage{xcolor}
+% \definecolor{mygreen}{rgb}{0,0.6,0}
+% \definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mylightgray}{rgb}{0.97,0.97,0.97}
+% \definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\usepackage[hmargin=2cm,vmargin=2cm]{geometry} % For more space left to text.
+
+\usepackage{graphicx}
+
+\usepackage{longtable} % Split a table across pages if too long.
+
+\usepackage{multicol}
+
+\usepackage{rotating} % for vertical text in table, via sideways.
+\usepackage{arydshln} % for \hdashline (horizontal dashed) and : (vertical dashed) in tabular.
+
+% \usepackage{mdframed} % For shaded backgrounds.
+% \usepackage{xcolor}
+
+% \usepackage{enumitem} % Allow deeper than default nesting of itemize, see \setlistdepth{9}
+
+\usepackage{hyperref} % for internal and external hyperlinks: cfr. http://en.wikibooks.org/wiki/LaTeX/Packages/Hyperref
+
+% \usepackage{siunitx} % for standardized SI units abbreviations
+
+\usepackage{makeidx} % for \makeindex etc.
+% \usepackage{showidx} % for display of index markers in the right margin along the text, while proofreading
+
+\usepackage{minitoc} % Puts a table of contents at the beginning of each chapter
+\setcounter{minitocdepth}{3} % How far down should minitoc go
+
+\usepackage{todonotes}
+
+\usepackage{cancel} % to simplify out expressions in equations
+\usepackage{amsmath,amsfonts,amssymb} % for pmatrix (amsmmath) and \mathbb{Z}, mathcal{G} etc., mathfrak{A}
+\DeclareMathOperator{\sgn}{sgn}
+
+\usepackage{esint} % for contour integrals: \ointctrclockwise etc.
+\DeclareMathOperator{\Tr}{Tr} % Trace symbol
+\usepackage{bm}
+
+% \usepackage{tikz}
+% \usetikzlibrary{arrows}
+% \usetikzlibrary{shapes} % for flowcharts
+% \usetikzlibrary{calc} % for polar coordinates plots
+
+\title{Literate programming example}
+\author{Alberto Marmodoro}
+
+\makeindex
+
+\begin{document}
+\setcounter{tocdepth}{4} % How detailed an index to build, where the argument is the level, starting with 0 (chapters only) to 4 (paragraph and subparagraph)
+
+% \newcommand{\eins}{\mbox{$1 \hspace{-1.0mm} {\bf l}$}} % Made up symbol for the identity matrix.
+% \newcommand{\isequal}{\mbox{$= \hspace{-3.0mm} {?}$}} % Made up symbol for an hypothetical identity.
+
+% \newcommand{\overzero}[1]{\text{\textit{\r{#1}}}}
+
+\newcommand{\todoubt}[2][]{\todo[inline, #1]{#2}} % Theory doubt
+\newcommand{\todospeed}[2][]{\todo[inline,color=green, #1]{#2}} % Better performances idea
+\newcommand{\todotext}[2][]{\todo[inline,color=yellow, #1]{#2}} % Textual improvement pending.
+\newcommand{\todocode}[2][]{\todo[inline,color=white, #1]{#2}} % Coding improvement pending.
+\newcommand{\todobug}[2][]{\todo[inline,color=red, #1]{#2}} % Severe bug, requiring fixing.
+
+\maketitle
+
+\dominitoc % Initialization mini table of contents at the beginning of each chapter
+
+\tableofcontents
+% \part{Parte prima}
+\chapter{Introduction}
+This is an experimental library to resume KKR prototyping...
+
+Test citation: \cite{Faulkner1980}
+
+\input{main_program.tex}
+% \lstinputlisting{tmp_ssite.F90_pruned}
+
+
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{unsrt}
+\bibliography{Bibliography/library} % Produces the bibliography via BibTeX.
+
+\addcontentsline{toc}{chapter}{Analytical index}
+\printindex
+
+\end{document}
+%stop_latex
